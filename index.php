@@ -17,7 +17,7 @@ echo $message;
 
 
 
-$output = json_decode(file_get_contents('php://input'), TRUE);
-echo $output;
+
+$output = implode(",", json_decode(file_get_contents('php://input'), TRUE));
 $url = $bot_url . "sendMessage?chat_id=" . $channel . "&text=" . urlencode($output);
 file_get_contents($url);
