@@ -13,19 +13,16 @@ function teleToLog($log) {
 function getUserRequest($text, $chat_id) {
   //список приветствий, который понимает бот
   $hello = array();
+  $hello[] = 'Привет';
   $hello[] = 'привет';
-  $hello[] = 'хай';
-  $hello[] = 'здорова';
-  $hello[] = 'здравствуйте';
-  $hello[] = 'здрасьте';
-  $hello[] = 'йо';
+  $hello[] = 'Здравствуйте';
 
   // варианты ответов бота
   $bot_hello = array();
   $bot_hello[] = 'И тебе привет';
-  $bot_hello[] = 'Привет от голоса';
+  $bot_hello[] = 'Здарова';
   $bot_hello[] = 'Доброго времени суток';
-  $bot_hello[] = 'Привет привет';
+  $bot_hello[] = 'Привет-привет че надо';
 
   if (in_array(strtolower($text), $hello)) {
     //пользователь поздоровался.
