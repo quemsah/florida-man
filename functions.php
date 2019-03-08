@@ -27,7 +27,7 @@ function getUserRequest($text, $chat_id) {
   $bot_hello[] = 'Доброго времени суток';
   $bot_hello[] = 'Привет привет';
 
-  if (in_array(mb_strtolower($text), $hello)) {
+  if (in_array(strtolower($text), $hello)) {
     //пользователь поздоровался.
     //случайная фраза привет от бота
     $bot_resp = $bot_hello[rand(0, (count($bot_hello) - 1))];
