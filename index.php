@@ -11,6 +11,13 @@ function FloridaMan($i)
 $botToken  = FloridaMan(0);
 $channel  = FloridaMan(1);
 $bot_url = "https://api.telegram.org/bot$botToken/";
-$url = $bot_url . "sendMessage?chat_id=" . $channel . "&text=" . urlencode($message);
-file_get_contents($url);
+$fp = fopen("is_running", "r+");
+if (! flock($fp, LOCK_EX | LOCK_NB)) return;
+for (;;)
+{
+  perform_actions();
+  sleep(300);
+  $url = $bot_url . "sendMessage?chat_id=" . $channel . "&text=" . urlencode($message);
+  file_get_contents($url);
+}
 ?>
