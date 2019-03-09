@@ -1,6 +1,5 @@
 <?php
 require 'define.php';
-include_once( "/inc/telegramDebugger/debug.inc" );
 
 $bot_token  = FloridaMan(0);
 $channel  = FloridaMan(1);
