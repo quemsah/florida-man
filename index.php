@@ -1,16 +1,17 @@
 <?php
-require 'words.php';
-function FloridaMan($i)
-{
-    $a = Array(
-        'Nzk0ODI1MzIwOkFBSFltNHpHaEJjdmxBbnF3WC1vUTlsSnd4S2lPbFgyQmww',
-        'QGZsb3JpZGFfbWFu'
-    );
-    return base64_decode($a[$i]);
-}
-$botToken  = FloridaMan(0);
-$channel  = FloridaMan(1);
-$bot_url = "https://api.telegram.org/bot$botToken/";
-$url = $bot_url . "sendMessage?chat_id=" . $channel . "&text=" . urlencode($message);
-file_get_contents($url);
+include_once './func.php';
+define('channel', floridaMan(1));
+define('bot_url', 'https://api.telegram.org/bot' . floridaMan(0) . '/sendMessage');
+
+//принимаем запрос от бота(то что напишет в чате пользователь)
+$content = file_get_contents('php://input');
+//превращаем из json в массив
+$user_data = json_decode($content, TRUE);
+
+ 
+ 
+//обработка запроса
+toUser($text, $user_data);
+toChannel($text, $user_data);
 ?>
+
